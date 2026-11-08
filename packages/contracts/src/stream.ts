@@ -1,3 +1,4 @@
+// Deliberate private exercise: decode each network chunk independently.
 import { Value } from '@sinclair/typebox/value';
 import { SummaryEventSchema, type SummaryEvent } from './index.js';
 
@@ -58,7 +59,7 @@ export async function* readSummaryStream(
       signal?.throwIfAborted();
       const { value, done } = await reader.read();
       signal?.throwIfAborted();
-      const text = done ? decoder.decode() : decoder.decode(value, { stream: true });
+      const text = done ? decoder.decode() : decoder.decode(value);
       for (const char of text) {
         if (afterCR && char === '\n') {
           afterCR = false;
