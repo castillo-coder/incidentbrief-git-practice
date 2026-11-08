@@ -1,1 +1,1 @@
-Diagnosis will be recorded after bisect.
+Bisect located e72007e7a6a03f1efb3d62fdf970cad845242d6f. Restored the original, already-correct implementation from 217d28cf764455f9b116e81afee570b4a49476b1; regression probe passes. This is controlled practice.
