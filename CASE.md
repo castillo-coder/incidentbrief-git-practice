@@ -1,1 +1,1 @@
-Baseline: real implementation, deterministic external regression probe.
+Controlled case: four records share a timestamp; page size is two. A timestamp-only cursor loses records.
