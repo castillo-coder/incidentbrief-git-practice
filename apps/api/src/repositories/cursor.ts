@@ -1,4 +1,3 @@
-// Deliberate private exercise: remove the equal-timestamp tie-breaker.
 import { sql } from 'drizzle-orm';
 import type { AnyPgColumn } from 'drizzle-orm/pg-core';
 import { invalid } from '../domain/errors.js';
@@ -40,6 +39,6 @@ export function beforeCursor(
   cursor: Cursor | undefined,
 ) {
   return cursor
-    ? sql`${createdAt} < ${cursor.created_at}::timestamptz`
+    ? sql`(${createdAt}, ${recordId}) < (${cursor.created_at}::timestamptz, ${cursor.id}::uuid)`
     : undefined;
 }
